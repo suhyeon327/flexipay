@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:18
+    container_name: flexipay-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    volumes:
+      - flexipay-postgres-data:/var/lib/postgresql
+
+volumes:
+  flexipay-postgres-data:
